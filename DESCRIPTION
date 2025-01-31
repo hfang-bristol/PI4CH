@@ -2,13 +2,13 @@ Package: PI4CH
 Type: Package
 Title: Priority Index for Clonal Hematopoiesis
 Version: 1.0.0
-Date: 2025-1-29
+Date: 2025-1-31
 Authors@R: c(person("Hai", "Fang", email="fh12355@rjh.com.cn", role=c("aut","cre")))
 Maintainer: Hai Fang <fh12355@rjh.com.cn>
-Depends: R (>= 4.3.2), igraph, ggplot2
+Depends: R (>= 4.4.2), igraph, ggplot2
 Imports: dplyr, forcats, GenomicRanges, ggnetwork, ggrepel, Matrix, osfr, purrr, stats, stringr, tibble, tidyr, pbapply, curl, ggraph
 Suggests: foreach, grid, gridExtra, RColorBrewer, ggupset, graphics, grDevices, utils, ggbio, GenomeInfoDb, doParallel, scales, supraHex
-Description: This package is designed to the use of Priority Index (PI) in identifying therapeutic candidates (both therapeutic targets and repurposed drugs) based on multi-layered datasets related to age-related clonal hematopoiesis, known as 'clonal hematopoiesis (CH)'. CH is used to describe the occurrence of somatic mutations in healthy persons without hematologic abnormalities.
+Description: This package is to implement the use of Priority Index (PI) in identifying therapeutic candidates (both therapeutic targets and repurposed drugs) based on multi-layered datasets related to age-related clonal hematopoiesis, known as 'clonal hematopoiesis (CH)'. CH is used to describe the occurrence of somatic mutations in healthy persons without hematologic abnormalities.
 Collate:
     'ClassMethod-PI4CH.r'
     'oRDS.r'
@@ -58,5 +58,9 @@ Collate:
     'oNetConfidence.r'
     'visNet.r'
     'visDAG.r'
+    'oSEAforest.r'
+    'oHEB.r'
+    'oVisAttack.r'
+    'oAddCoords.r'
 License: GPL-2
 biocViews: SystemsBiology, GeneTarget, Pathways
