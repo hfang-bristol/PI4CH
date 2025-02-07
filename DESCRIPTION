@@ -2,7 +2,7 @@ Package: PI4CH
 Type: Package
 Title: Priority Index for Clonal Hematopoiesis
 Version: 1.0.0
-Date: 2025-2-5
+Date: 2025-2-7
 Authors@R: c(person("Hai", "Fang", email="fh12355@rjh.com.cn", role=c("aut","cre")))
 Maintainer: Hai Fang <fh12355@rjh.com.cn>
 Depends: R (>= 4.4.2), igraph, ggplot2
@@ -70,5 +70,6 @@ Collate:
     'oDAGanno.r'
     'oGSEAdotplot.r'
     'oAUCurve.r'
+    'oConverter.r'
 License: GPL-2
 biocViews: SystemsBiology

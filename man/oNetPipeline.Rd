@@ -11,7 +11,7 @@ method = c("pdf", "cdf", "customised"),
 significance.threshold = NULL,
 nsize = NULL,
 plot = F,
-verbose = T
+verbose = TRUE
 )
 }
 \arguments{

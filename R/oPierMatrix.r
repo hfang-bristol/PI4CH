@@ -441,10 +441,10 @@ oPierMatrix <- function(list_pNode, displayBy=c("score","rank","weight","pvalue"
     endT <- Sys.time()
     if(verbose){
         message(paste(c("\nFinish at ",as.character(endT)), collapse=""), appendLF=TRUE)
-    }
-    
-    runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
-    message(paste(c("Runtime in total is: ",runTime," secs\n"), collapse=""), appendLF=TRUE)
 	
+		runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
+		message(paste(c("Runtime in total (oPierMatrix): ",runTime," secs\n"), collapse=""), appendLF=TRUE)
+	}
+		
     invisible(df_predictor)
 }

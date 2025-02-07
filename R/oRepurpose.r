@@ -35,7 +35,7 @@
 #' write.table(DR$index, file="oRepurpose_index.txt", sep="\t", row.names=F, quote=F)
 #' }
 
-oRepurpose <- function(data, phase.min=4, target.max=5, plot=TRUE, verbose=T, DTT=c("ChEMBL_v34","ChEMBL_v33"), restricted=NULL, excluded=NULL, placeholder=NULL, guid=NULL, ...)
+oRepurpose <- function(data, phase.min=4, target.max=5, plot=TRUE, verbose=T, DTT=c("ChEMBL_v35","ChEMBL_v34"), restricted=NULL, excluded=NULL, placeholder=NULL, guid=NULL, ...)
 {
     
     ChEMBL <- NULL

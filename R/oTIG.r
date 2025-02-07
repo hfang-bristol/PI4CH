@@ -92,6 +92,6 @@ oTIG <- function(data, method=c("empirical","hybrid","jaccard"), empirical.cutof
 	
 	#gp <- oGGnetwork(tig, node.label='name', node.label.size=2.5, node.label.color='darkblue', node.label.force=1, node.xcoord='xcoord', node.ycoord='ycoord', colormap="cyan4-cyan4", edge.size='weight', node.shape=18, node.size='n_members', node.size.title="Num of \ngenes", node.size.range=c(2,5), edge.color='cyan4', edge.color.alpha=0.3, edge.curve=0,edge.arrow.gap=0.01)
 	
-	tig
+	return(tig)
 }
 

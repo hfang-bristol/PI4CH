@@ -43,13 +43,13 @@
 #' subgraph <- oNetPipeline(g=subg, pval=x, nsize=20)
 #' }
 
-oNetPipeline <- function(g, pval, method=c("pdf","cdf","customised"), significance.threshold=NULL, nsize=NULL, plot=F, verbose=T)
+oNetPipeline <- function(g, pval, method=c("pdf","cdf","customised"), significance.threshold=NULL, nsize=NULL, plot=F, verbose=TRUE)
 {
 
     startT <- Sys.time()
     if(verbose){
-        message(paste(c("Start at ",as.character(startT)), collapse=""), appendLF=T)
-        message("", appendLF=T)
+        #message(paste(c("Start at ",as.character(startT)), collapse=""), appendLF=T)
+        #message("", appendLF=T)
     }
     ####################################################################################
     
@@ -252,11 +252,11 @@ oNetPipeline <- function(g, pval, method=c("pdf","cdf","customised"), significan
     ####################################################################################
     endT <- Sys.time()
     if(verbose){
-        message(paste(c("\nFinish at ",as.character(endT)), collapse=""), appendLF=T)
-    }
+        #message(paste(c("\nFinish at ",as.character(endT)), collapse=""), appendLF=T)
     
-    runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
-    message(paste(c("Runtime in total is: ",runTime," secs\n"), collapse=""), appendLF=T)
+		runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
+		#message(paste(c("Runtime in total (oNetPipeline): ",runTime," secs\n"), collapse=""), appendLF=T)
+    }
     
     return(subgraph)
 

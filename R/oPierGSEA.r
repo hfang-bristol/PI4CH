@@ -325,12 +325,12 @@ oPierGSEA <- function(pNode, priority.top=NULL, customised.genesets, size.range=
     class(eGSEA) <- "eGSEA"
     
 ####################################################################################
-    endT <- Sys.time()
-    runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
-    
+    endT <- Sys.time()    
     if(!silent){
     	message(paste(c("\nEnd at ",as.character(endT)), collapse=""), appendLF=TRUE)
-    	message(paste(c("Runtime in total is: ",runTime," secs\n"), collapse=""), appendLF=TRUE)
+    	
+    	runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
+    	message(paste(c("Runtime in total (oPierGSEA): ",runTime," secs\n"), collapse=""), appendLF=TRUE)
     }
     
     invisible(eGSEA)

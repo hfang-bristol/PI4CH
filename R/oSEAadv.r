@@ -123,11 +123,11 @@ oSEAadv <- function(list_vec, sets, background=NULL, size.range=c(10,2000), min.
     eSAD <- df_res_all
     class(eSAD) <- c("eSAD",class(eSAD))
      ####################################################################################
-    endT <- Sys.time()
-    runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
-    
+    endT <- Sys.time()    
     if(!silent){
     	message(paste(c("\nEnd at ",as.character(endT)), collapse=""), appendLF=TRUE)
+    	
+    	runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
     	message(paste(c("Runtime in total (oSEAadv): ",runTime," secs\n"), collapse=""), appendLF=TRUE)
     }
     

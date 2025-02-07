@@ -107,7 +107,7 @@ oSubneterGenes <- function(data, network=NA, STRING.only=NA, network.customised=
 		ind <- match(V(g)$name, names(pval))
 		## for extracted graph
 		nodes_mapped <- V(g)$name[!is.na(ind)]
-		g <- oNetInduce(ig=g, nodes_query=nodes_mapped, knn=0, remove.loops=FALSE, largest.comp=TRUE)
+		g <- oNetInduce(ig=g, nodes_query=nodes_mapped, knn=0, remove.loops=FALSE, largest.comp=TRUE, verbose=FALSE)
 		
 		## update 'pval' based on 'g'
 		ind <- match(names(pval), V(g)$name)
@@ -266,10 +266,10 @@ oSubneterGenes <- function(data, network=NA, STRING.only=NA, network.customised=
     
     ####################################################################################
     endT <- Sys.time()
-    runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
-    
     if(!silent){
     	message(paste(c("\nEnd at ",as.character(endT)), collapse=""), appendLF=TRUE)
+    	
+    	runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
     	message(paste(c("Runtime in total (oSubneterGenes): ",runTime," secs\n"), collapse=""), appendLF=TRUE)
     }
     

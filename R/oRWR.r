@@ -341,11 +341,11 @@ oRWR <- function(g, normalise=c("laplacian","row","column","none"), setSeeds=NUL
     endT <- Sys.time()
     if(verbose){
         message(paste(c("\nFinish at ",as.character(endT)), collapse=""), appendLF=TRUE)
-    }
-    
-    runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
-    message(paste(c("Runtime in total is: ",runTime," secs\n"), collapse=""), appendLF=TRUE)
-
+	
+		runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
+		message(paste(c("Runtime in total (oRWR): ",runTime," secs\n"), collapse=""), appendLF=TRUE)
+	}
+	
     invisible(PTmatrix)
 }
 

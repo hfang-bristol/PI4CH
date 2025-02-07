@@ -235,7 +235,7 @@ oNetFind <- function(g, scores)
                         
         }else{
             ## connected graph between borders (neg.node.ids.2)
-            subg <- oNetInduce(sub.mig, V(sub.mig)[neg.node.ids.2]$name, knn=0, remove.loops=T, largest.comp=T)
+            subg <- oNetInduce(sub.mig, V(sub.mig)[neg.node.ids.2]$name, knn=0, remove.loops=T, largest.comp=T, verbose=F)
             #mst.subg <- minimum.spanning.tree(subg, E(subg)$weight)
             mst.subg <- igraph::mst(subg, E(subg)$weight)
         

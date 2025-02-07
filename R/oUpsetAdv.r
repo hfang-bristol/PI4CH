@@ -80,6 +80,6 @@ oUpsetAdv <- function(data, sortBy=c("auto","value","degree"), color="cyan4", sh
 		gp <- gp + ggupset::theme_combmatrix(combmatrix.panel.point.color.fill="grey50", combmatrix.panel.point.color.empty="grey90", combmatrix.panel.point.size=1.5, combmatrix.panel.line.size=0.1, combmatrix.label.height=unit(label.height.unit*(length(levels)+1),"pt"), combmatrix.label.text=element_text(size=label.height.unit))
 	}
 	
-	gp
+	invisible(gp)
 }
 

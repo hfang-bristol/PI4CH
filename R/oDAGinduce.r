@@ -97,11 +97,11 @@ oDAGinduce <- function(ig, nodes_query=NULL, path.mode=c("all_paths","shortest_p
 
 ####################################################################################
     endT <- Sys.time()
-    runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
-    
     if(verbose){
     	message(sprintf("\nEnded (at %s)", as.character(endT)), appendLF=TRUE)
-    	message(sprintf("Runtime in total: %d secs\n", runTime), appendLF=TRUE)
+    	
+    	runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
+    	message(sprintf("Runtime in total (oDAGinduce): %d secs\n", runTime), appendLF=TRUE)
     }
     
     return(subg)

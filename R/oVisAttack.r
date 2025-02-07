@@ -52,6 +52,6 @@ oVisAttack <- function(data, color="cyan4", shape=18, size=2, label.height.unit=
 	gp <- gp + scale_y_continuous(limits=NULL) + geom_point(aes(fill=as.factor(i)), shape=22, size=2, color="transparent") + geom_line(aes(group=i,color=as.factor(i))) + guides(color="none")
 	gp <- gp + ylab("Effect-by-removal\n(% nodes disconnected upon removal)") + scale_fill_discrete(guide=guide_legend("# nodes removed", title.position="top", nrow=1)) + theme(legend.position="top", axis.title.y=element_text(size=10), axis.text.y=element_text(size=8))
 
-	gp
+	invisible(gp)
 }
 

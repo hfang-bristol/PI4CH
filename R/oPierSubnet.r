@@ -138,9 +138,9 @@ oPierSubnet <- function(pNode, priority.quantile=0.1, network=NA, STRING.only=NA
     }
     
     if(is.na(network)){
-    	subg <- oSubneterGenes(data=pval, network.customised=network.customised, seed.genes=TRUE, subnet.significance=subnet.significance, subnet.size=subnet.size, test.permutation=test.permutation, num.permutation=num.permutation, respect=respect, aggregateBy=aggregateBy, verbose=verbose, placeholder=placeholder, guid=guid)
+    	subg <- oSubneterGenes(data=pval, network.customised=network.customised, seed.genes=TRUE, subnet.significance=subnet.significance, subnet.size=subnet.size, test.permutation=test.permutation, num.permutation=num.permutation, respect=respect, aggregateBy=aggregateBy, verbose=verbose, silent=FALSE, placeholder=placeholder, guid=guid)
     }else{
-    	subg <- oSubneterGenes(data=pval, network=network, STRING.only=STRING.only, network.customised=network.customised, seed.genes=TRUE, subnet.significance=subnet.significance, subnet.size=subnet.size, test.permutation=test.permutation, num.permutation=num.permutation, respect=respect, aggregateBy=aggregateBy, verbose=verbose, placeholder=placeholder, guid=guid)
+    	subg <- oSubneterGenes(data=pval, network=network, STRING.only=STRING.only, network.customised=network.customised, seed.genes=TRUE, subnet.significance=subnet.significance, subnet.size=subnet.size, test.permutation=test.permutation, num.permutation=num.permutation, respect=respect, aggregateBy=aggregateBy, verbose=verbose, silent=FALSE, placeholder=placeholder, guid=guid)
 	}
 	
 	# extract relevant info
@@ -174,10 +174,10 @@ oPierSubnet <- function(pNode, priority.quantile=0.1, network=NA, STRING.only=NA
     endT <- Sys.time()
     if(verbose){
         message(paste(c("\nFinish at ",as.character(endT)), collapse=""), appendLF=TRUE)
-    }
     
-    runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
-    message(paste(c("Runtime in total is: ",runTime," secs\n"), collapse=""), appendLF=TRUE)
+		runTime <- as.numeric(difftime(strptime(endT, "%Y-%m-%d %H:%M:%S"), strptime(startT, "%Y-%m-%d %H:%M:%S"), units="secs"))
+		message(paste(c("Runtime in total (oPierSubnet): ",runTime," secs\n"), collapse=""), appendLF=TRUE)
+    }
     
     return(subnet)
 }
