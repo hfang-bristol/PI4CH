@@ -27,7 +27,7 @@ seeds.inclusive = TRUE,
 normalise = c("laplacian", "row", "column", "none"),
 restart = 0.7,
 normalise.affinity.matrix = c("none", "quantile"),
-GR.Gene = c("UCSC_knownGene", "UCSC_knownCanonical"),
+GR.Gene = "UCSC_knownGene",
 verbose = TRUE,
 placeholder = NULL,
 guid = NULL
@@ -35,11 +35,11 @@ guid = NULL
 }
 \arguments{
 \item{data}{a named input vector containing a list of seed nodes (ie
-gene symbols). For this named vector, the element names are seed/node
-names (e.g. gene symbols), the element (non-zero) values used to weight
-the relative importance of seeds. Alternatively, it can be a matrix or
-data frame with two columns: 1st column for seed/node names, 2nd column
-for the weight values}
+gene symbols; no less than 3 genes). For this named vector, the element
+names are seed/node names (e.g. gene symbols), the element (non-zero)
+values used to weight the relative importance of seeds. Alternatively,
+it can be a matrix or data frame with two columns: 1st column for
+seed/node names, 2nd column for the weight values}
 
 \item{network}{the built-in network. Currently two sources of network
 information are supported: the STRING database (version 10) and the
@@ -104,7 +104,7 @@ provided}
 
 \item{seeds.inclusive}{logical to indicate whether non-network seed
 genes are included for prioritisation. If TRUE (by default), these
-genes will be added to the netowrk}
+genes will be added to the network}
 
 \item{normalise}{the way to normalise the adjacency matrix of the input
 graph. It can be 'laplacian' for laplacian normalisation, 'row' for
@@ -127,16 +127,13 @@ output affinity matrix have the same quantiles}
 
 \item{GR.Gene}{the genomic regions of genes. By default, it is
 'UCSC_knownGene', that is, UCSC known genes (together with genomic
-locations) based on human genome assembly hg19. It can be
-'UCSC_knownCanonical', that is, UCSC known canonical genes (together
-with genomic locations) based on human genome assembly hg19.
-Alternatively, the user can specify the customised input. To do so,
-first save your RData file (containing an GR object) into your local
-computer, and make sure the GR object content names refer to Gene
-Symbols. Then, tell "GR.Gene" with your RData file name (with or
-without extension), plus specify your file RData path in
-"RData.location". Note: you can also load your customised GR object
-directly}
+locations) based on human genome assembly hg19. Alternatively, the user
+can specify the customised input. To do so, first save your RData file
+(containing an GR object) into your local computer, and make sure the
+GR object content names refer to Gene Symbols. Then, tell "GR.Gene"
+with your RData file name (with or without extension), plus specify
+your file RData path in "RData.location". Note: you can also load your
+customised GR object directly}
 
 \item{verbose}{logical to indicate whether the messages will be
 displayed in the screen. By default, it sets to true for display}

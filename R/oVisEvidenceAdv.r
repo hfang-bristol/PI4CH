@@ -115,7 +115,7 @@ oVisEvidenceAdv <- function(xTarget, g=NA, nodes=NULL, node.info=c("smart","simp
 		df_sub <- cbind(df_sub_1, df_sub_2) %>% dplyr::slice(ind)
 		
 		columns <- colnames(df_sub_2)
-		gp <- oPieplot(df_sub, columns, colormap='ggplot2', pie.radius=pie.radius, pie.color=pie.color, pie.color.alpha=pie.color.alpha, pie.thick=pie.thick, legend.title='Seed gene', gp=gp)
+		gp <- oPieplot(df_sub, columns, colormap='ggplot2', pie.radius=pie.radius, pie.color=pie.color, pie.color.alpha=pie.color.alpha, pie.thick=pie.thick, legend.title='Seed genes', gp=gp)
 	}
 	
     invisible(gp)

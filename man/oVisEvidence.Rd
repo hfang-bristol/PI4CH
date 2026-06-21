@@ -94,7 +94,7 @@ each vertex has the size proportional to the degree of nodes}
 \item{vertex.label.color.nonseed}{the color of nonseed vertex labels}
 
 \item{...}{additional graphic parameters. See
-\url{http://igraph.org/r/doc/plot.common.html} for the complete list.}
+\url{https://igraph.org/r/doc/plot.common.html} for the complete list.}
 }
 \value{
 a subgraph, an object of class "igraph".

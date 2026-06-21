@@ -52,7 +52,7 @@ red-yellow-green-cyan-blue-magenta). Alternatively, any
 hyphen-separated HTML color names, e.g. "lightyellow-orange" (by
 default), "blue-black-yellow", "royalblue-white-sandybrown",
 "darkgreen-white-darkviolet". A list of standard color names can be
-found in \url{http://html-color-codes.info/color-names}}
+found in \url{https://html-color-codes.info/color-names/}}
 
 \item{ncolors}{the number of colors specified over the colormap}
 

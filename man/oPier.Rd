@@ -28,7 +28,7 @@ undirected graph internally if a directed graph provided}
 
 \item{seeds.inclusive}{logical to indicate whether non-network seed
 genes are included for prioritisation. If TRUE (by default), these
-genes will be added to the netowrk}
+genes will be added to the network}
 
 \item{normalise}{the way to normalise the adjacency matrix of the input
 graph. It can be 'laplacian' for laplacian normalisation, 'row' for

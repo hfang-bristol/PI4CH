@@ -21,7 +21,7 @@
 #' @param vertex.size.nonseed the size of each nonseed vertex. If null, each vertex has the size proportional to the degree of nodes
 #' @param vertex.label.color the color of vertex labels
 #' @param vertex.label.color.nonseed the color of nonseed vertex labels
-#' @param ... additional graphic parameters. See \url{http://igraph.org/r/doc/plot.common.html} for the complete list.
+#' @param ... additional graphic parameters. See \url{https://igraph.org/r/doc/plot.common.html} for the complete list.
 #' @return
 #' a subgraph, an object of class "igraph".
 #' @export

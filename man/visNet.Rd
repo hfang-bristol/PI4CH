@@ -46,7 +46,7 @@ red-yellow-green-cyan-blue-magenta). Alternatively, any
 hyphen-separated HTML color names, e.g. "blue-black-yellow",
 "royalblue-white-sandybrown", "darkgreen-white-darkviolet". A list of
 standard color names can be found in
-\url{http://html-color-codes.info/color-names}}
+\url{https://html-color-codes.info/color-names/}}
 
 \item{ncolors}{the number of colors specified over the colormap}
 
@@ -71,7 +71,7 @@ determine the actual coordinates. This function can be one of
 "layout.reingold.tilford", "layout.fruchterman.reingold.grid",
 "layout.lgl", "layout.graphopt", "layout.svd" and "layout.norm". A full
 explanation of these layouts can be found in
-\url{http://igraph.org/r/doc/layout_nicely.html}}
+\url{https://igraph.org/r/doc/layout_nicely.html}}
 
 \item{vertex.frame.color}{the color of the frame of the vertices. If it
 is NA, then there is no frame}
@@ -104,7 +104,7 @@ is 1 then the label is displayed beside the vertex.}
 \item{vertex.label.family}{the font family of vertex labels}
 
 \item{...}{additional graphic parameters. See
-\url{http://igraph.org/r/doc/plot.common.html} for the complete list.}
+\url{https://igraph.org/r/doc/plot.common.html} for the complete list.}
 }
 \value{
 invisible

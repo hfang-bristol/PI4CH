@@ -14,7 +14,7 @@
 #' @param chromosome.only logical to indicate whether only genes from input data will be displayed. By default, it sets to TRUE
 #' @param y.scale how to transform the y scale. It can be "normal" for no transformation, "sqrt" for square root transformation, and "log" for log-based transformation
 #' @param y.lab the y labelling. If NULL (by default), it shows the column of input data
-#' @param GR.Gene the genomic regions of genes. By default, it is 'UCSC_knownGene', that is, UCSC known genes (together with genomic locations) based on human genome assembly hg19. It can be 'UCSC_knownCanonical', that is, UCSC known canonical genes (together with genomic locations) based on human genome assembly hg19. Alternatively, the user can specify the customised input. To do so, first save your RData file (containing an GR object) into your local computer, and make sure the GR object content names refer to Gene Symbols. Then, tell "GR.Gene" with your RData file name (with or without extension), plus specify your file RData path in "placeholder"
+#' @param GR.Gene the genomic regions of genes. By default, it is 'UCSC_knownGene', that is, UCSC known genes (together with genomic locations) based on human genome assembly hg19. Alternatively, the user can specify the customised input. To do so, first save your RData file (containing an GR object) into your local computer, and make sure the GR object content names refer to Gene Symbols. Then, tell "GR.Gene" with your RData file name (with or without extension), plus specify your file RData path in "placeholder"
 #' @param font.family the font family for texts
 #' @param verbose logical to indicate whether the messages will be displayed in the screen. By default, it sets to false for no display
 #' @param placeholder the characters to tell the location of built-in RData files. See \code{\link{oRDS}} for details
@@ -43,7 +43,7 @@
 #' mp
 #' }
 
-oPierManhattan <- function(pNode, color=c("darkred","steelblue4"), point.size=0.2, top=10000, top.label.type=c("text","box"), top.label.size=2, top.label.col="black", top.label.query=NULL, label.query.only=FALSE, chromosome.only=TRUE, y.scale=c("normal","sqrt","log"), y.lab="Priority rating", GR.Gene=c("UCSC_knownGene","UCSC_knownCanonical"), font.family="sans", verbose=TRUE, placeholder=NULL, guid=NULL, ...)
+oPierManhattan <- function(pNode, color=c("darkred","steelblue4"), point.size=0.2, top=10000, top.label.type=c("text","box"), top.label.size=2, top.label.col="black", top.label.query=NULL, label.query.only=FALSE, chromosome.only=TRUE, y.scale=c("normal","sqrt","log"), y.lab="Priority rating", GR.Gene="UCSC_knownGene", font.family="sans", verbose=TRUE, placeholder=NULL, guid=NULL, ...)
 {
 
     ## match.arg matches arg against a table of candidate values as specified by choices, where NULL means to take the first one
