@@ -214,11 +214,18 @@ oGGnetwork <- function(g, node.label=NULL, label.wrap.width=NULL, label.wrap.lin
 	
 		## node.label.size (by default, 0)
 		if(length(node.label.size)!=nnode){
+			
+			# debug: 2026-06-21
+			tmp.node.label.size <- rep(0, nnode)
 			if(!is.null(node.label.size)){
-				tmp.node.label.size <- igraph::vertex_attr(ig, node.label.size)
-			}else{
-				tmp.node.label.size <- rep(0, nnode)
+				if(!is.numeric(node.label.size)){
+					tmp.node.label.size <- igraph::vertex_attr(ig, node.label.size)
+				}else{
+					tmp.node.label.size <- NULL
+				}
+				
 			}
+			
 			if(is.null(tmp.node.label.size)){
 				node.label.size <- rep(node.label.size, nnode)
 			}else{
@@ -229,11 +236,17 @@ oGGnetwork <- function(g, node.label=NULL, label.wrap.width=NULL, label.wrap.lin
 	
 		## node.label.fontface (by default, 0)
 		if(length(node.label.fontface)!=nnode){
+		
+			# debug: 2026-06-21
+			tmp.node.label.fontface <- rep(0, nnode)
 			if(!is.null(node.label.fontface)){
-				tmp.node.label.fontface <- igraph::vertex_attr(ig, node.label.fontface)
-			}else{
-				tmp.node.label.fontface <- rep(0, nnode)
+				if(!is.numeric(node.label.fontface)){
+					tmp.node.label.fontface <- igraph::vertex_attr(ig, node.label.fontface)
+				}else{
+					tmp.node.label.fontface <- NULL
+				}
 			}
+			
 			if(is.null(tmp.node.label.fontface)){
 				node.label.fontface <- rep(node.label.fontface, nnode)
 			}else{
@@ -244,11 +257,17 @@ oGGnetwork <- function(g, node.label=NULL, label.wrap.width=NULL, label.wrap.lin
 	
 		## node.label.color (by default, 0)
 		if(length(node.label.color)!=nnode){
+			
+			# debug: 2026-06-21
+			tmp.node.label.color <- rep(0, nnode)
 			if(!is.null(node.label.color)){
-				tmp.node.label.color <- igraph::vertex_attr(ig, node.label.color)
-			}else{
-				tmp.node.label.color <- rep(0, nnode)
+				if(!is.numeric(node.label.color)){
+					tmp.node.label.color <- igraph::vertex_attr(ig, node.label.color)
+				}else{
+					tmp.node.label.color <- NULL	
+				}
 			}
+			
 			if(is.null(tmp.node.label.color)){
 				node.label.color <- rep(node.label.color, nnode)
 			}else{
@@ -276,11 +295,17 @@ oGGnetwork <- function(g, node.label=NULL, label.wrap.width=NULL, label.wrap.lin
 	
 		## node.size (by default, 0)
 		if(length(node.size)!=nnode){
+			
+			# debug: 2026-06-21
+			tmp.node.size <- rep(0, nnode)
 			if(!is.null(node.size)){
-				tmp.node.size <- igraph::vertex_attr(ig, node.size)
-			}else{
-				tmp.node.size <- rep(0, nnode)
+				if(!is.numeric(node.size)){
+					tmp.node.size <- igraph::vertex_attr(ig, node.size)
+				}else{
+					tmp.node.size <- NULL	
+				}
 			}
+			
 			if(is.null(tmp.node.size)){
 				node.size <- rep(node.size, nnode)
 			}else{
@@ -297,11 +322,17 @@ oGGnetwork <- function(g, node.label=NULL, label.wrap.width=NULL, label.wrap.lin
 		
 		## node.shape (by default, 19)
 		if(length(node.shape)!=nnode){
+			
+			# debug: 2026-06-21
+			tmp.node.shape <- rep(19, nnode)
 			if(!is.null(node.shape)){
-				tmp.node.shape <- igraph::vertex_attr(ig, node.shape)
-			}else{
-				tmp.node.shape <- rep(19, nnode)
+				if(!is.numeric(node.shape)){
+					tmp.node.shape <- igraph::vertex_attr(ig, node.shape)
+				}else{
+					tmp.node.shape <- NULL	
+				}
 			}
+			
 			if(is.null(tmp.node.shape)){
 				node.shape <- rep(node.shape, nnode)
 			}else{
@@ -314,11 +345,17 @@ oGGnetwork <- function(g, node.label=NULL, label.wrap.width=NULL, label.wrap.lin
 		nedge <- igraph::ecount(ig)
 		## edge.color (by default, 'black')
 		if(length(edge.color)!=nedge){
+			
+			# debug: 2026-06-21
+			tmp.edge.color <- rep('black', nedge)
 			if(!is.null(edge.color)){
-				tmp.edge.color <- igraph::edge_attr(ig, edge.color)
-			}else{
-				tmp.edge.color <- rep('black', nedge)
+				if(!is.numeric(edge.color)){
+					tmp.edge.color <- igraph::edge_attr(ig, edge.color)
+				}else{
+					tmp.edge.color <- NULL
+				}
 			}
+			
 			if(is.null(tmp.edge.color)){
 				edge.color <- rep(edge.color, nedge)
 			}else{
@@ -328,11 +365,17 @@ oGGnetwork <- function(g, node.label=NULL, label.wrap.width=NULL, label.wrap.lin
 		E(ig)$e.color <- edge.color
 		## edge.color.alpha (by default, 0.5)
 		if(length(edge.color.alpha)!=nedge){
+			
+			# debug: 2026-06-21
+			tmp.edge.color.alpha <- rep(0.5, nedge)
 			if(!is.null(edge.color.alpha)){
-				tmp.edge.color.alpha <- igraph::edge_attr(ig, edge.color.alpha)
-			}else{
-				tmp.edge.color.alpha <- rep(0.5, nedge)
+				if(!is.numeric(edge.color.alpha)){
+					tmp.edge.color.alpha <- igraph::edge_attr(ig, edge.color.alpha)
+				}else{
+					tmp.edge.color.alpha <- NULL
+				}
 			}
+			
 			if(is.null(tmp.edge.color.alpha)){
 				edge.color.alpha <- rep(edge.color.alpha, nedge)
 			}else{
@@ -342,11 +385,17 @@ oGGnetwork <- function(g, node.label=NULL, label.wrap.width=NULL, label.wrap.lin
 		E(ig)$e.color.alpha <- edge.color.alpha
 		## edge.size (by default, 0.5)
 		if(length(edge.size)!=nedge){
+			
+			# debug: 2026-06-21
+			tmp.edge.size <- rep(0.5, nedge)
 			if(!is.null(edge.size)){
-				tmp.edge.size <- igraph::edge_attr(ig, edge.size)
-			}else{
-				tmp.edge.size <- rep(0.5, nedge)
+				if(!is.numeric(edge.size)){
+					tmp.edge.size <- igraph::edge_attr(ig, edge.size)
+				}else{
+					tmp.edge.size <- NULL
+				}
 			}
+			
 			if(is.null(tmp.edge.size)){
 				edge.size <- rep(edge.size, nedge)
 			}else{

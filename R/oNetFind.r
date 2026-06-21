@@ -73,6 +73,7 @@ oNetFind <- function(g, scores)
         warning("No positive nodes")
         subgraph <- graph.empty(n=0, directed=F)
     }else if(length(pos.nodes)==1){
+    	warning("only one positive node")
         subgraph <- oNetInduce(ig, pos.nodes, knn=0, remove.loops=T, largest.comp=T, verbose=F)
         V(subgraph)$type <- 'desired'
         
@@ -236,73 +237,84 @@ oNetFind <- function(g, scores)
         }else{
             ## connected graph between borders (neg.node.ids.2)
             subg <- oNetInduce(sub.mig, V(sub.mig)[neg.node.ids.2]$name, knn=0, remove.loops=T, largest.comp=T, verbose=F)
-            #mst.subg <- minimum.spanning.tree(subg, E(subg)$weight)
-            mst.subg <- igraph::mst(subg, E(subg)$weight)
-        
-            ## A function for getting path score
-            getPathScore <- function(path, graph1, graph2){    
-                ## score in graph1
-                s1 <- V(graph1)[path]$score
-                ## score in graph2
-                tmp <- unique(unlist(V(graph1)[path]$clusters))
-                s2 <- V(graph2)[tmp]$score
-                ## return    
-                sum(c(s1,s2))
-            }
             
-            ## find a best path in border graph (mst.subg) with the highest score
-            max.score <- 0
-            best.path <- c()
-            for (i in 1:vcount(mst.subg)) {
-                #path <- get.all.shortest.paths(mst.subg, from=V(mst.subg)[i])
-                path <- igraph::all_shortest_paths(mst.subg, from=V(mst.subg)[i])
-                path.score <- unlist(lapply(path$res, getPathScore, graph1=mst.subg, graph2=sub.mig))
-                best.pos <- which.max(path.score)
-                if (path.score[[best.pos]] > max.score) {
-                    best.path <- path$res[[best.pos]]
-                    max.score <- path.score[[best.pos]]
-                }
-            }
+            # debug 2026-06-21
+            if(ecount(subg)==0){
+				warning("No edges left")
+				subgraph <- oNetInduce(ig, pos.nodes, knn=0, remove.loops=T, largest.comp=T, verbose=F)
+				V(subgraph)$type <- 'desired'
             
-            if(length(best.path)!=1){
-                cluster.list <- V(mst.subg)[best.path]$clusters
-                names.list <- as.character(1:length(cluster.list))
-                names(cluster.list) <- names.list
-                names(best.path) <- names.list
+            }else{
+			
+				#mst.subg <- minimum.spanning.tree(subg, E(subg)$weight)
+				mst.subg <- igraph::mst(subg, E(subg)$weight)
+		
+				## A function for getting path score
+				getPathScore <- function(path, graph1, graph2){    
+					## score in graph1
+					s1 <- V(graph1)[path]$score
+					## score in graph2
+					tmp <- unique(unlist(V(graph1)[path]$clusters))
+					s2 <- V(graph2)[tmp]$score
+					## return    
+					sum(c(s1,s2))
+				}
+			
+				## find a best path in border graph (mst.subg) with the highest score
+				max.score <- 0
+				best.path <- c()
+				for (i in 1:vcount(mst.subg)) {
+					#path <- get.all.shortest.paths(mst.subg, from=V(mst.subg)[i])
+					path <- igraph::all_shortest_paths(mst.subg, from=V(mst.subg)[i])
+					path.score <- unlist(lapply(path$res, getPathScore, graph1=mst.subg, graph2=sub.mig))
+					best.pos <- which.max(path.score)
+					if (path.score[[best.pos]] > max.score) {
+						best.path <- path$res[[best.pos]]
+						max.score <- path.score[[best.pos]]
+					}
+				}
+			
+				if(length(best.path)!=1){
+					cluster.list <- V(mst.subg)[best.path]$clusters
+					names.list <- as.character(1:length(cluster.list))
+					names(cluster.list) <- names.list
+					names(best.path) <- names.list
 
-                for (i in names.list) {
-                    res <- lapply(cluster.list, intersect, cluster.list[[i]])
-                    if(length(intersect(unlist(cluster.list[as.character(which(as.numeric(names.list)<as.numeric(i)))]), unlist(cluster.list[as.character(which(as.numeric(names.list)>as.numeric(i)))])))>0){
-                        if (length(setdiff(res[[i]], unique(unlist(res[names(res)!=i]))))==0){
-                            cluster.list <- cluster.list[names(cluster.list)!=i]
-                            names.list <- names.list[names.list!=i]
-                        }
-                    }
-                }
-                best.path <- best.path[names.list]
+					for (i in names.list) {
+						res <- lapply(cluster.list, intersect, cluster.list[[i]])
+						if(length(intersect(unlist(cluster.list[as.character(which(as.numeric(names.list)<as.numeric(i)))]), unlist(cluster.list[as.character(which(as.numeric(names.list)>as.numeric(i)))])))>0){
+							if (length(setdiff(res[[i]], unique(unlist(res[names(res)!=i]))))==0){
+								cluster.list <- cluster.list[names(cluster.list)!=i]
+								names.list <- names.list[names.list!=i]
+							}
+						}
+					}
+					best.path <- best.path[names.list]
+				}
+			
+				## extract those meta-nodes attached to best.path
+				pos.cluster <- V(sub.mig)[unique(unlist(V(mst.subg)[best.path]$clusters))]$name
+				tmp <- unlist(strsplit(pos.cluster, "cluster"))
+				ttmp <- as.numeric(matrix(tmp, nrow=2)[2,])
+				tmp_meta_nodes <- unlist(lapply(conn.comp.graph, get.vertex.attribute, "name")[ttmp])
+				## extract those border nodes along best.path
+				tmp_border_nodes <- V(mst.subg)[best.path]$name
+			
+				tmp_nodes <- c(tmp_border_nodes, tmp_meta_nodes)
+				subgraph <- oNetInduce(ig, tmp_nodes, knn=0, remove.loops=F, largest.comp=T, verbose=F)
+			
+				##########################
+				type <- rep('desired', vcount(subgraph))
+				names(type) <- V(subgraph)$name
+				if(1){
+					# fix the bugs (20240412)
+					ind <- match(names(type), tmp_border_nodes)
+					type[!is.na(ind)] <- 'linker'
+				}
+				V(subgraph)$type <- type
+				##########################
+
             }
-            
-            ## extract those meta-nodes attached to best.path
-            pos.cluster <- V(sub.mig)[unique(unlist(V(mst.subg)[best.path]$clusters))]$name
-            tmp <- unlist(strsplit(pos.cluster, "cluster"))
-            ttmp <- as.numeric(matrix(tmp, nrow=2)[2,])
-            tmp_meta_nodes <- unlist(lapply(conn.comp.graph, get.vertex.attribute, "name")[ttmp])
-            ## extract those border nodes along best.path
-            tmp_border_nodes <- V(mst.subg)[best.path]$name
-            
-            tmp_nodes <- c(tmp_border_nodes, tmp_meta_nodes)
-            subgraph <- oNetInduce(ig, tmp_nodes, knn=0, remove.loops=F, largest.comp=T, verbose=F)
-            
-            ##########################
-            type <- rep('desired', vcount(subgraph))
-            names(type) <- V(subgraph)$name
-            if(1){
-            	# fix the bugs (20240412)
-            	ind <- match(names(type), tmp_border_nodes)
-            	type[!is.na(ind)] <- 'linker'
-            }
-            V(subgraph)$type <- type
-            ##########################
         }
     }
     
