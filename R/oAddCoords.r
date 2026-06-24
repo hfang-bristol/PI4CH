@@ -86,7 +86,9 @@ oAddCoords <- function(g, node.attr=NULL, glayout=layout_with_kk, edge.color.alt
 	if(1){
 		ls_tmp <- split(x=df_nodes$name, f=df_nodes$node.attr)
 		ls_ig <- lapply(ls_tmp, function(x){
-			g <- oNetInduce(ig, nodes_query=x, knn=0, largest.comp=TRUE)
+			#g <- oNetInduce(ig, nodes_query=x, knn=0, largest.comp=TRUE)
+			# debug: 2026-06-22
+			g <- oNetInduce(ig, nodes_query=x, knn=0, largest.comp=F)
 		})
 		
 		## collectively
